@@ -20,7 +20,7 @@
 function buttonPlay(){
 hideElementById('home-screen');
 removeElementById('playground-section');
-continueGame()
+continueGame();
 }
 
 
@@ -51,8 +51,6 @@ const currentAlphabet = document.getElementById('current-alphabet');
 currentAlphabet.innerText = alphabet;
 //set background color
 addBackgroundColor(alphabet);
-
-
 }
 function getARandomAlphabet(){
   //get or create an alphabet array by using string.
