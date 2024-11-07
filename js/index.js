@@ -46,11 +46,9 @@ function continueGame(){
 //step-1:generate a random alphabet
 const alphabet =getARandomAlphabet();
 console.log('your random alphabet',alphabet);
-
 //set randomly generated alphabet to the screen (show it) 
 const currentAlphabet = document.getElementById('current-alphabet');
 currentAlphabet.innerText = alphabet;
-
 //set background color
 addBackgroundColor(alphabet);
 
@@ -69,3 +67,7 @@ function getARandomAlphabet(){
   //console.log(index,alphabet);
   return alphabet;
 }
+
+//alphabets[randomNumber] অ্যারের randomNumber ইনডেক্সে থাকা অক্ষরটি বের করে।
+//উদাহরণস্বরূপ, যদি randomNumber = 3 হয়, তবে alphabets[3] হবে 'd'।
+//এই অক্ষরটি পরে গেমের স্ক্রীনে বা অন্যান্য কাজে ব্যবহৃত হবে।
