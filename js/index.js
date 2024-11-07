@@ -21,6 +21,7 @@ function buttonPlay(){
 hideElementById('home-screen');
 removeElementById('playground-section');
 continueGame();
+
 }
 
 
@@ -41,18 +42,41 @@ function addBackgroundColor(elementId){
   const element = document.getElementById(elementId);
   element.classList.add('bg-orange-400');
 }
+function removeBackgroundColor(elementId){
+  const element = document.getElementById(elementId);
+  element.classList.remove('bg-orange-400');
+}
 
 
-function handleKeyboardButtonPress(){
-  console.log('button pressed');
+function handleKeyboardButtonPress(sami){             //ai line
+  const playerPressed = sami.key;
+  //console.log('player pressed',playerPressed);
+
+  //get the expected to press
+    const currentAlphabetElement = document.getElementById('current-alphabet');
+   const currentAlphabet = currentAlphabetElement.innerText;
+   const expectedAlphabet = currentAlphabet.toLowerCase();
+   //console.log(playerPressed,expectedAlphabet);
+
+
+  //check matched or not
+  if(playerPressed===expectedAlphabet){
+    console.log('you get a point');
+    console.log('you have pressed correctly',expectedAlphabet);
+    removeBackgroundColor(expectedAlphabet);
+    continueGame();
+  }
+  else{
+    console.log('you missed.you lost a life');
+  }
 }
 //capture keyboard key press
-document.addEventListener('keyup',handleKeyboardButtonPress)
+document.addEventListener('keyup',handleKeyboardButtonPress)         //ai line
 
 function continueGame(){
 //step-1:generate a random alphabet
 const alphabet =getARandomAlphabet();
-console.log('your random alphabet',alphabet);
+//console.log('your random alphabet',alphabet);
 //set randomly generated alphabet to the screen (show it) 
 const currentAlphabet = document.getElementById('current-alphabet');
 currentAlphabet.innerText = alphabet;
