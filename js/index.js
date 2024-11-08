@@ -61,13 +61,35 @@ function handleKeyboardButtonPress(sami){             //ai line
 
   //check matched or not
   if(playerPressed===expectedAlphabet){
-    console.log('you get a point');
-    console.log('you have pressed correctly',expectedAlphabet);
+    console.log('you got a point');
+    //update score:
+    //1.get the current score
+   const currentScoreElement = document.getElementById('current-score');
+    const currentScoreText = currentScoreElement.innerText;
+    const currentScore =parseInt(currentScoreText)
+    console.log(currentScore);
+
+    //2.increase the score by 1
+   const newScore = currentScore + 1 ;
+
+    //3.show the updated score
+   currentScoreElement.innerText= newScore;
+
+   //start a new round 
     removeBackgroundColor(expectedAlphabet);
     continueGame();
   }
   else{
     console.log('you missed.you lost a life');
+    //step-1:get the current life number
+    const currentLifeElement = document.getElementById('current-life');
+    const currentLifeText = currentLifeElement.innerText;
+    const currentLife = parseInt(currentLifeText);
+    console.log(currentLife);
+    //step-2:reduce the life count
+    const reduceLife = currentLife - 1 ;
+    //step-3:display the updated life count 
+    currentLifeElement.innerText = reduceLife;
   }
 }
 //capture keyboard key press
