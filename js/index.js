@@ -47,6 +47,18 @@ function removeBackgroundColor(elementId){
   element.classList.remove('bg-orange-400');
 }
 
+function getElementValueById(elementId){
+  const element = document.getElementById(elementId);
+  const elementValueText = element.innerText;
+  const value = parseInt(elementValueText);
+  return value;
+}
+
+function setTextElementValueById(elementId,value){
+  const element = document.getElementById(elementId);
+  element.innerText = value;
+}
+
 
 function handleKeyboardButtonPress(sami){             //ai line
   const playerPressed = sami.key;
@@ -62,18 +74,24 @@ function handleKeyboardButtonPress(sami){             //ai line
   //check matched or not
   if(playerPressed===expectedAlphabet){
     console.log('you got a point');
+
+    const currentScore = getElementValueById('current-score');
+    const updatedScore= currentScore + 1;
+    setTextElementValueById('current-score',updatedScore);
+    
+
     //update score:
     //1.get the current score
-   const currentScoreElement = document.getElementById('current-score');
-    const currentScoreText = currentScoreElement.innerText;
-    const currentScore =parseInt(currentScoreText)
-    console.log(currentScore);
+  //  const currentScoreElement = document.getElementById('current-score');
+  //   const currentScoreText = currentScoreElement.innerText;
+  //   const currentScore =parseInt(currentScoreText)
+  //   console.log(currentScore);
 
-    //2.increase the score by 1
-   const newScore = currentScore + 1 ;
+  //   //2.increase the score by 1
+    //const newScore = currentScore + 1 ;
 
-    //3.show the updated score
-   currentScoreElement.innerText= newScore;
+  //   //3.show the updated score
+  //  currentScoreElement.innerText= newScore;
 
    //start a new round 
     removeBackgroundColor(expectedAlphabet);
@@ -81,15 +99,20 @@ function handleKeyboardButtonPress(sami){             //ai line
   }
   else{
     console.log('you missed.you lost a life');
-    //step-1:get the current life number
-    const currentLifeElement = document.getElementById('current-life');
-    const currentLifeText = currentLifeElement.innerText;
-    const currentLife = parseInt(currentLifeText);
-    console.log(currentLife);
-    //step-2:reduce the life count
-    const reduceLife = currentLife - 1 ;
-    //step-3:display the updated life count 
-    currentLifeElement.innerText = reduceLife;
+
+    const currentLife =getElementValueById('current-life');
+    const updatedLife = currentLife - 1;
+    setTextElementValueById('current-life',updatedLife);
+
+    // //step-1:get the current life number
+    // const currentLifeElement = document.getElementById('current-life');
+    // const currentLifeText = currentLifeElement.innerText;
+    // const currentLife = parseInt(currentLifeText);
+    // console.log(currentLife);
+    // //step-2:reduce the life count
+    // const reduceLife = currentLife - 1 ;
+    // //step-3:display the updated life count 
+    // currentLifeElement.innerText = reduceLife;
   }
 }
 //capture keyboard key press
