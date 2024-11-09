@@ -18,12 +18,31 @@
 
 
 function buttonPlay(){
+  //hide everything show only the playground
 hideElementById('home-screen');
-removeElementById('playground-section');
+hideElementById('score');
+showElementById('playground-section');
+
+//reset score and life
+setTextElementValueById('current-life',5)
+setTextElementValueById('current-score',0)
 continueGame();
 
 }
 
+
+function gameOver(){
+  hideElementById('playground-section');
+  showElementById('score');
+//update final score
+//1.get the final score
+ const lastScore = getElementValueById('current-score')
+ setTextElementValueById('last-score',lastScore);
+
+ //clear the last selected alphabet highlight
+  const currentAlphabet= getElementTextById('current-alphabet');
+  removeBackgroundColor(currentAlphabet);
+}
 
 
 
@@ -33,7 +52,7 @@ function hideElementById(elementId){
   element.classList.add('hidden');
 }
 
-function removeElementById(elementRemove){
+function showElementById(elementRemove){
   const remove = document.getElementById(elementRemove);
   remove.classList.remove('hidden');
 }
@@ -59,9 +78,22 @@ function setTextElementValueById(elementId,value){
   element.innerText = value;
 }
 
+function getElementTextById(elementId){
+ const element = document.getElementById(elementId);
+ const text = element.innerText;
+ return text;
+}
 
 function handleKeyboardButtonPress(sami){             //ai line
   const playerPressed = sami.key;
+  console.log('player pressed',playerPressed)
+
+  //stop the game if pressed 'Esc'
+if(playerPressed==='Escape'){
+  gameOver();
+}
+
+
   //console.log('player pressed',playerPressed);
 
   //get the expected to press
@@ -103,7 +135,9 @@ function handleKeyboardButtonPress(sami){             //ai line
     const currentLife =getElementValueById('current-life');
     const updatedLife = currentLife - 1;
     setTextElementValueById('current-life',updatedLife);
-
+    if(updatedLife===0){
+      gameOver();
+    }
     // //step-1:get the current life number
     // const currentLifeElement = document.getElementById('current-life');
     // const currentLifeText = currentLifeElement.innerText;
