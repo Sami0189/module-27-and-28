@@ -47,10 +47,40 @@ function gameOver(){
 
 
 
-function hideElementById(elementId){
+function hideElementById(elementId){                        
   const element = document.getElementById(elementId);
   element.classList.add('hidden');
 }
+
+
+//ঠিক আছে, আরও সহজভাবে বলছি। এবার ধাপে ধাপে ছোট করে ব্যাখ্যা করছি।
+
+//ধাপ ১: ফাংশনের নাম এবং প্যারামিটার
+//তুমি এই ফাংশনের নাম দিয়েছো addBackgroundColor, আর এখানে elementId একটা প্যারামিটার।
+
+//ধরো, তুমি তোমার ফাংশনকে বলছো, "কোন একটা জিনিস (এলিমেন্ট) খুঁজে বের করে এতে রঙ লাগাও।" কিন্তু তোমার ফাংশন জানে না, ঠিক কোন জিনিসে রঙ লাগাতে হবে।
+
+//ধাপ ২: যখন ফাংশন কল করো
+//তুমি যখন addBackgroundColor('item-2') এইভাবে কল করো, তখন 'item-2' হচ্ছে ওই জিনিসের (এলিমেন্টের) "নাম" বা "ঠিকানা", যেটাতে তুমি রঙ লাগাতে চাও। 'item-2' মানটি elementId নামের প্যারামিটারে চলে যায়।
+
+//মানে: এখানে elementId হিসেবে 'item-2' ঢুকিয়ে দিয়েছো।
+
+//ধাপ ৩: দ্বিতীয় লাইনে elementId ব্যবহার করা
+//এখন, ফাংশনের ভেতর, দ্বিতীয় লাইনে লেখা আছে: document.getElementById(elementId);।
+
+//এখানে elementId ব্যবহার করা হচ্ছে সেই জিনিসটিকে খুঁজে বের করতে। যেহেতু তুমি elementId এ 'item-2' দিয়েছো, তাই এটা 'item-2' আইডি-র এলিমেন্ট খুঁজে বের করে।
+
+//সংক্ষেপে:
+//প্রথম লাইন: ফাংশনকে বলছো, "কোন আইডি দিয়ে এলিমেন্টটা চিনবে?" এটা হলো elementId।
+//দ্বিতীয় লাইন: ওই elementId ব্যবহার করে, ফাংশনটি গিয়ে ঠিক ওই এলিমেন্টটা খুঁজে বের করে এবং পরে তাতে কাজ (রঙ লাগানো) করে।
+//আশা করি এবার বিষয়টা আরও পরিষ্কার হলো!
+
+
+
+
+
+
+
 
 function showElementById(elementRemove){
   const remove = document.getElementById(elementRemove);
